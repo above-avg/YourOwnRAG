@@ -7,11 +7,14 @@ WORKDIR /app/frontend
 # Copy frontend package files
 COPY app/package*.json ./
 
-# Install frontend dependencies
-RUN npm ci --only=production
+# Install frontend dependencies (including dev dependencies for build)
+RUN npm ci --include=dev
 
 # Copy frontend source code
 COPY app/ .
+
+# Verify vite is installed
+RUN npx vite --version
 
 # Build frontend for production
 RUN npm run build
