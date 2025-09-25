@@ -9,6 +9,12 @@ import os
 import uuid
 import shutil
 import logging
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import load_env
+sys.path.append(str(Path(__file__).parent.parent))
+import load_env
 
 # Setup logging
 logging.basicConfig(filename='app.log', level=logging.INFO)
